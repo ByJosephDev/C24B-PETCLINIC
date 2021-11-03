@@ -31,5 +31,22 @@ public class OwnerServiceTest{
 
 		assertThat(SIZE_EXPECTED, is(own.size()));
 	}
+	@Test
+	public void testFindByLastname() {
+		String FIND_LASTNAME = "Harold";
+		int SIZE_EXPECTED = 1;
+		List<Owner> own = ownerService.findByFirstname(FIND_LASTNAME);
+
+		assertThat(SIZE_EXPECTED, is(own.size()));
+	}
+	@Test
+	public void testFindByTelephone() {
+		String FIND_TELEPHONE = "123456789";
+		int SIZE_EXPECTED = 1;
+		List<Owner> own = ownerService.findByFirstname(FIND_TELEPHONE);
+
+		assertThat(SIZE_EXPECTED, is(own.size()));
+	}
+	
 	
 }
