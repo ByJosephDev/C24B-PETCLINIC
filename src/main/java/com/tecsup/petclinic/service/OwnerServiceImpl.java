@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tecsup.petclinic.domain.Owner;
 import com.tecsup.petclinic.domain.OwnerRepository;
+import com.tecsup.petclinic.domain.Pet;
 import com.tecsup.petclinic.exception.OwnerNotFoundException;
 
 @Service
@@ -61,5 +62,11 @@ public class OwnerServiceImpl implements OwnerService{
 	@Override
 	public Iterable<Owner> findAll() {
 		return ownerRepository.findAll();
+	}
+
+	@Override
+	public List<Pet> findByPetName(int petId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
