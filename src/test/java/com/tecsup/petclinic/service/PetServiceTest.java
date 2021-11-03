@@ -23,9 +23,6 @@ public class PetServiceTest {
 	@Autowired
 	private PetService petService;
 
-	/**
-	 * 
-	 */
 	@Test
 	public void testFindPetById() {
 
@@ -46,9 +43,6 @@ public class PetServiceTest {
 
 	}
 
-	/**
-	 * 
-	 */
 	@Test
 	public void testFindPetByName() {
 
@@ -60,9 +54,6 @@ public class PetServiceTest {
 		assertThat(pets.size(), is(SIZE_EXPECTED));
 	}
 
-	/**
-	 * 
-	 */
 	@Test
 	public void testFindPetByTypeId() {
 
@@ -74,9 +65,6 @@ public class PetServiceTest {
 		assertThat(pets.size(), is(SIZE_EXPECTED));
 	}
 
-	/**
-	 * 
-	 */
 	@Test
 	public void testFindPetByOwnerId() {
 
@@ -89,12 +77,6 @@ public class PetServiceTest {
 		
 	}
 
-	/**
-	 *  To get ID generate , you need 
-	 *  setup in id primary key in your
-	 *  entity this annotation :
-	 *  	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 */
 	@Test
 	public void testCreatePet() {
 
@@ -116,10 +98,6 @@ public class PetServiceTest {
 
 	}
 
-	
-	/**
-	 * 
-	 */
 	@Test
 	public void testUpdatePet() {
 
@@ -158,9 +136,6 @@ public class PetServiceTest {
 		assertThat(upgradePet.getOwnerId(), is(UP_TYPE_ID));
 	}
 
-	/**
-	 * 
-	 */
 	@Test
 	public void testDeletePet() {
 

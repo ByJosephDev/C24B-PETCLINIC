@@ -31,11 +31,11 @@ public class OwnerServiceTest{
 	
 	@Test
 	public void testCreateOwner() {
-        String FIRST_NAME="Marcos";
-        String LAST_NAME="Castro";
-        String ADDRESS="marcos@gmail.com";
-        String CITY="Arizona";
-        String TELEPHONE="968569586";
+		String FIRST_NAME="Cristhian";
+        String LAST_NAME="Lope";
+        String ADDRESS="Jr.Ancash";
+        String CITY="El Agustino";
+        String TELEPHONE="994007897";
         
         Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         owner=ownerService.create(owner);
@@ -50,18 +50,18 @@ public class OwnerServiceTest{
 	@Test
 	public void testUpdateOwner() {
         
-        String FIRST_NAME="Marcos";
-        String LAST_NAME="Castro";
-        String ADDRESS="marcos@gmail.com";
-        String CITY="Arizona";
-        String TELEPHONE="968569586";
+		String FIRST_NAME="Cristhian";
+        String LAST_NAME="Lope";
+        String ADDRESS="Jr.Ancash";
+        String CITY="El Agustino";
+        String TELEPHONE="994007897";
         long create_id = -1;
         
-        String UP_FIRST_NAME="Marcos";
-        String UP_LAST_NAME="Lambada";
-        String UP_ADDRESS="mario@gmail.com";
-        String UP_CITY="Tenesis";
-        String UP_TELEPHONE="966632365";
+        String UP_FIRST_NAME="Cristhian";
+        String UP_LAST_NAME="Puma";
+        String UP_ADDRESS="Jr.Trujillo";
+        String UP_CITY="La victoria";
+        String UP_TELEPHONE="948969237";
         
         Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         // Create record
