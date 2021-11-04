@@ -27,7 +27,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	//@Test
 	public void testFindPetById() {
 
 		long ID = 1;
@@ -50,7 +50,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	//@Test
 	public void testFindPetByName() {
 
 		String FIND_NAME = "Leo";
@@ -64,7 +64,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	//@Test
 	public void testFindPetByTypeId() {
 
 		int TYPE_ID = 5;
@@ -78,7 +78,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	//@Test
 	public void testFindPetByOwnerId() {
 
 		int OWNER_ID = 10;
@@ -96,7 +96,7 @@ public class PetServiceTest {
 	 *  entity this annotation :
 	 *  	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	 */
-	@Test
+	//@Test
 	public void testCreatePet() {
 
 		String PET_NAME = "Ponky";
@@ -104,13 +104,14 @@ public class PetServiceTest {
 		int TYPE_ID = 1;
 
 		Pet pet = new Pet(PET_NAME, 1, 1);
-		pet = petService.create(pet);
-		logger.info("" + pet);
-
-		assertThat(pet.getId(), notNullValue());
-		assertThat(PET_NAME, is(pet.getName()));
-		assertThat(OWNER_ID, is(pet.getOwnerId()));
-		assertThat(TYPE_ID,is(pet.getTypeId()));
+		Pet petCreated = petService.create(pet);
+		logger.info("PET:" + pet);
+		
+		//  			ACTUAL -  ESPERADO
+		assertThat(petCreated.getId(), notNullValue());
+		assertThat(petCreated.getName(),is("Ponky213"));
+		assertThat(petCreated.getOwnerId(),is(OWNER_ID));
+		assertThat(petCreated.getTypeId(),is(TYPE_ID));
 
 	}
 
@@ -157,7 +158,7 @@ public class PetServiceTest {
 	/**
 	 * 
 	 */
-	@Test
+	//@Test
 	public void testDeletePet() {
 
 		String PET_NAME = "Bird";
