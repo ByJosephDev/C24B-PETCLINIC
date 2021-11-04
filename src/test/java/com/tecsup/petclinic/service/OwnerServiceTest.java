@@ -22,7 +22,7 @@ public class OwnerServiceTest{
 	 */
 	@Test
 	public void testFindByFirstname() {
-		String FIND_NAME = "George";
+		String FIND_NAME = "Jhon";
 		int SIZE_EXPECTED = 1;
 		List<Owner> own = ownerService.findByFirstname(FIND_NAME);
 
@@ -31,11 +31,11 @@ public class OwnerServiceTest{
 	
 	@Test
 	public void testCreateOwner() {
-		String FIRST_NAME="Cristhian";
-        String LAST_NAME="Lope";
-        String ADDRESS="Jr.Ancash";
-        String CITY="El Agustino";
-        String TELEPHONE="994007897";
+		String FIRST_NAME="Jhon";
+        String LAST_NAME="Mendoza";
+        String ADDRESS="Lourdes";
+        String CITY="Lima";
+        String TELEPHONE="915622897";
         
         Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         owner=ownerService.create(owner);
@@ -50,18 +50,18 @@ public class OwnerServiceTest{
 	@Test
 	public void testUpdateOwner() {
         
-		String FIRST_NAME="Cristhian";
-        String LAST_NAME="Lope";
-        String ADDRESS="Jr.Ancash";
-        String CITY="El Agustino";
-        String TELEPHONE="994007897";
-        long create_id = -1;
+		String FIRST_NAME="Mike";
+        String LAST_NAME="Puma";
+        String ADDRESS="Jr.Trujillo";
+        String CITY="Lima";
+        String TELEPHONE="956843447";
+        long create_id = 10;
         
-        String UP_FIRST_NAME="Cristhian";
-        String UP_LAST_NAME="Puma";
-        String UP_ADDRESS="Jr.Trujillo";
-        String UP_CITY="La victoria";
-        String UP_TELEPHONE="948969237";
+        String UP_FIRST_NAME="Rene";
+        String UP_LAST_NAME="Garcia";
+        String UP_ADDRESS="Lima";
+        String UP_CITY="Lima";
+        String UP_TELEPHONE="911134473";
         
         Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         // Create record
@@ -92,11 +92,11 @@ public class OwnerServiceTest{
     }
 	@Test
 	public void testDeleteOwner() {
-        String FIRST_NAME="Jeff";
-        String LAST_NAME="Black";
-        String ADDRESS="1450 Oak Blvd.";
-        String CITY="Monona";
-        String TELEPHONE="6085555387'";
+        String FIRST_NAME="Betty";
+        String LAST_NAME="Davis";
+        String ADDRESS="638 Cardinal Ave.";
+        String CITY="Sun Prairie";
+        String TELEPHONE="6085551749";
         Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         owner=ownerService.create(owner);
         logger.info(""+owner);
