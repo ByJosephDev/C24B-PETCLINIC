@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.service;
+package com.tecsup.petclinic.services;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.tecsup.petclinic.domain.Owner;
+
+import com.tecsup.petclinic.entities.Owner;
 import com.tecsup.petclinic.exception.OwnerNotFoundException;
+import com.tecsup.petclinic.services.OwnerService;
 
 @SpringBootTest
 public class OwnerServiceTest{
@@ -47,6 +49,7 @@ public class OwnerServiceTest{
         assertThat(CITY, is(owner.getCity()));
         assertThat(TELEPHONE, is(owner.getTelephone()));        
     }	
+	
 	@Test
 	public void testUpdateOwner() {
         
@@ -70,14 +73,12 @@ public class OwnerServiceTest{
         logger.info(">>" + readOwner);
 
         create_id = readOwner.getId();
-
         // Prepare data for update
         readOwner.setFirstname(UP_FIRST_NAME);
         readOwner.setLastname(UP_LAST_NAME);
         readOwner.setAddress(UP_ADDRESS);
         readOwner.setCity(UP_CITY);
         readOwner.setTelephone(UP_TELEPHONE);
-
         // Execute update
         Owner upgradeOwner = ownerService.update(readOwner);
         logger.info(">>>>" + upgradeOwner);
@@ -90,6 +91,7 @@ public class OwnerServiceTest{
         assertThat(UP_CITY, is(upgradeOwner.getCity()));
         assertThat(UP_TELEPHONE, is(upgradeOwner.getTelephone()));      	
     }
+	
 	@Test
 	public void testDeleteOwner() {
         String FIRST_NAME="Jeff";
@@ -107,3 +109,4 @@ public class OwnerServiceTest{
         }           
     }
 }
+
