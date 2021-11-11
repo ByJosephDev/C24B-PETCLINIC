@@ -52,21 +52,21 @@ public class OwnerServiceTest{
 	
 	@Test
 	public void testUpdateOwner() {
+        int Id =24;
+		String FIRST_NAME="Jhon";
+        String LAST_NAME="Mendoza";
+        String ADDRESS="Lourdes";
+        String CITY="Lima";
+        String TELEPHONE="915622897";
         
-		String FIRST_NAME="Cristhian";
-        String LAST_NAME="Lope";
-        String ADDRESS="Jr.Ancash";
-        String CITY="El Agustino";
-        String TELEPHONE="994007897";
         long create_id = -1;
+        String UP_FIRST_NAME="Crish";
+        String UP_LAST_NAME="Carranza";
+        String UP_ADDRESS="Jr.Cuzco";
+        String UP_CITY="ATE";
+        String UP_TELEPHONE="91234589";
         
-        String UP_FIRST_NAME="Cristhian";
-        String UP_LAST_NAME="Puma";
-        String UP_ADDRESS="Jr.Trujillo";
-        String UP_CITY="La victoria";
-        String UP_TELEPHONE="948969237";
-        
-        Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
+        Owner owner=new Owner( Id,FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         // Create record
         logger.info(">" + owner);
         Owner readOwner = ownerService.create(owner);
@@ -94,7 +94,7 @@ public class OwnerServiceTest{
 	
 	@Test
 	public void testDeleteOwner() {
-		int Id = 25;
+		int Id = 28;
         String FIRST_NAME="Paolo";
         String LAST_NAME="Quispe";
         String ADDRESS="Jr.Cuzco";
