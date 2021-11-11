@@ -94,12 +94,13 @@ public class OwnerServiceTest{
 	
 	@Test
 	public void testDeleteOwner() {
-        String FIRST_NAME="Jeff";
-        String LAST_NAME="Black";
-        String ADDRESS="1450 Oak Blvd.";
-        String CITY="Monona";
-        String TELEPHONE="6085555387'";
-        Owner owner=new Owner( FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
+		int Id = 25;
+        String FIRST_NAME="Paolo";
+        String LAST_NAME="Quispe";
+        String ADDRESS="Jr.Cuzco";
+        String CITY="Miraflores";
+        String TELEPHONE="951753689";
+        Owner owner=new Owner( Id,FIRST_NAME,LAST_NAME,ADDRESS,CITY,TELEPHONE);
         owner=ownerService.create(owner);
         logger.info(""+owner);
         try {
