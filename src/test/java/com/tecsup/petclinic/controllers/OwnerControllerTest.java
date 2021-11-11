@@ -1,6 +1,7 @@
 package com.tecsup.petclinic.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -17,8 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import com.tecsup.petclinic.dto.OwnerDTO;
 
 @AutoConfigureMockMvc
@@ -120,5 +123,30 @@ public class OwnerControllerTest {
 		
 	}
 	
+	@Test
+	public void testDeleteOwner() throws Exception {
+		
+		String FIRSTNAME_OWNER = "George";
+		String LASTNAME_OWNER = "Franklin";
+		String ADDRESS_OWNER = "110 W. Liberty St.";
+		String CITY_OWNER = "Madison";
+		String TELEPHONE_OWNER = "6085551023";
+		
+		OwnerDTO newOwner = new OwnerDTO(FIRSTNAME_OWNER,LASTNAME_OWNER,ADDRESS_OWNER,CITY_OWNER,TELEPHONE_OWNER);
+		
+		ResultActions mvcActions = mockMvc.perform(post("/owners")
+				.content(om.writeValueAsString(newOwner))
+				.header(HttpHeaders.CONTENT_TYPE,MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isCreated());
+
+		String response = mvcActions.andReturn().getResponse().getContentAsString();
+		
+		Integer id = JsonPath.parse(response).read("$.id");
+		
+		mockMvc.perform(delete("/owners/" + id))
+				.andExpect(status().isOk());
+		
+	}
 	
 }
