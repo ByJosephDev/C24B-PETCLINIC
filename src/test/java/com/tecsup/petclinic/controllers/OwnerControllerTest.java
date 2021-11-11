@@ -148,6 +148,5 @@ public class OwnerControllerTest {
 				.andExpect(status().isOk());
 		
 	}
-	
 	 
 }
