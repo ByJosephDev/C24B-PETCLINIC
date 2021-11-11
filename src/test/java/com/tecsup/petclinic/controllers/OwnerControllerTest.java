@@ -2,6 +2,8 @@ package com.tecsup.petclinic.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -12,10 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tecsup.petclinic.dto.OwnerDTO;
 
 @AutoConfigureMockMvc
 @SpringBootTest
@@ -87,6 +91,34 @@ public class OwnerControllerTest {
 			.andExpect(status().isNotFound());
 		
 	}
-
+	
+	@Test
+	public void testCreateOwner() throws Exception {
+		
+		String FIRSTNAME_OWNER = "George";
+		String LASTNAME_OWNER = "Franklin";
+		String ADDRESS_OWNER = "110 W. Liberty St.";
+		String CITY_OWNER = "Madison";
+		String TELEPHONE_OWNER = "6085551023";
+		
+		OwnerDTO newOwner = new OwnerDTO(FIRSTNAME_OWNER,LASTNAME_OWNER,ADDRESS_OWNER,CITY_OWNER,TELEPHONE_OWNER);
+		
+		logger.info(newOwner.toString());
+		logger.info(om.writeValueAsString(newOwner));
+		
+		mockMvc.perform(post("/owners")
+				.content(om.writeValueAsString(newOwner))
+				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.firstname", is(FIRSTNAME_OWNER)))
+				.andExpect(jsonPath("$.lastname", is(LASTNAME_OWNER)))
+				.andExpect(jsonPath("$.address", is(ADDRESS_OWNER)))
+				.andExpect(jsonPath("$.city", is(CITY_OWNER)))
+				.andExpect(jsonPath("$.telephone", is(TELEPHONE_OWNER)));
+				
+		
+	}
+	
 	
 }
