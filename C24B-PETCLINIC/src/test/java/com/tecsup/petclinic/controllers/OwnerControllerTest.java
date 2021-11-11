@@ -29,6 +29,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
+import com.tecsup.petclinic.dto.PetDTO;
 import com.tecsup.petclinic.entities.Owner;
 
 @AutoConfigureMockMvc
@@ -60,6 +61,38 @@ public class OwnerControllerTest {
 	}
 	
 	
+	@Test
+	public void testFindOwnerOK() throws Exception {
+		
+		int ID_SEARCH = 1;
+		String FIRSTNAME_OWNER = "George";
+		String LASTNAME_OWNER = "Franklin";
+		String ADDRESS_OWNER = "110 W. Liberty St.";
+		String CITY_OWNER = "Madison";
+		String TELEPHONE_OWNER = "6085551023";
+		
+		/*
+		   {
+		    "id": 1,
+		    "firstname": "George",
+		    "lastname": "Franklin",
+		    "address": "110 W. Liberty St.",
+		    "city": "Madison",
+		    "telephone": "6085551023"
+  			}
+		 */
+		
+		mockMvc.perform(get("/owners/"+ ID_SEARCH))
+			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.id", is(1)))
+			.andExpect(jsonPath("$.firstname", is(FIRSTNAME_OWNER)))
+			.andExpect(jsonPath("$.lastname", is(LASTNAME_OWNER)))
+			.andExpect(jsonPath("$.address", is(ADDRESS_OWNER)))
+			.andExpect(jsonPath("$.city", is(CITY_OWNER)))
+			.andExpect(jsonPath("$.telephone", is(TELEPHONE_OWNER)));
+		
+	}
 	
 		@Test
 	    	public void testDeleteOwner() throws Exception {
