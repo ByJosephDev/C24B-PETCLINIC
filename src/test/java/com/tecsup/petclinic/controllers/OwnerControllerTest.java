@@ -98,11 +98,11 @@ public class OwnerControllerTest {
 	@Test
 	public void testCreateOwner() throws Exception {
 		
-		String FIRSTNAME_OWNER = "George";
-		String LASTNAME_OWNER = "Franklin";
+		String FIRSTNAME_OWNER = "Cristhian";
+		String LASTNAME_OWNER = "Lope";
 		String ADDRESS_OWNER = "110 W. Liberty St.";
 		String CITY_OWNER = "Madison";
-		String TELEPHONE_OWNER = "6085551023";
+		String TELEPHONE_OWNER = "6182551023";
 		
 		OwnerDTO newOwner = new OwnerDTO(FIRSTNAME_OWNER,LASTNAME_OWNER,ADDRESS_OWNER,CITY_OWNER,TELEPHONE_OWNER);
 		
