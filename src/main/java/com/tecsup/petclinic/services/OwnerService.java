@@ -1,6 +1,7 @@
-package com.tecsup.petclinic.service;
+package com.tecsup.petclinic.services;
 import java.util.List;
-import com.tecsup.petclinic.domain.Owner;
+
+import com.tecsup.petclinic.entities.Owner;
 import com.tecsup.petclinic.exception.OwnerNotFoundException;
 
 public interface OwnerService {

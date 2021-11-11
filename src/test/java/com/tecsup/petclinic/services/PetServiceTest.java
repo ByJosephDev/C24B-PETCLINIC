@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.service;
+package com.tecsup.petclinic.services;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -12,8 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.tecsup.petclinic.domain.Pet;
+import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
+import com.tecsup.petclinic.services.PetService;
 
 @SpringBootTest
 public class PetServiceTest {
@@ -23,6 +24,9 @@ public class PetServiceTest {
 	@Autowired
 	private PetService petService;
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testFindPetById() {
 
@@ -43,6 +47,9 @@ public class PetServiceTest {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testFindPetByName() {
 
@@ -54,6 +61,9 @@ public class PetServiceTest {
 		assertThat(pets.size(), is(SIZE_EXPECTED));
 	}
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testFindPetByTypeId() {
 
@@ -65,6 +75,9 @@ public class PetServiceTest {
 		assertThat(pets.size(), is(SIZE_EXPECTED));
 	}
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testFindPetByOwnerId() {
 
@@ -77,14 +90,20 @@ public class PetServiceTest {
 		
 	}
 
+	/**
+	 *  To get ID generate , you need 
+	 *  setup in id primary key in your
+	 *  entity this annotation :
+	 *  	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	 */
 	@Test
 	public void testCreatePet() {
 
-		String PET_NAME = "Rocky";
-		int OWNER_ID = 3;
-		int TYPE_ID = 2;
+		String PET_NAME = "Ponky";
+		int OWNER_ID = 1;
+		int TYPE_ID = 1;
 
-		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
+		Pet pet = new Pet(PET_NAME, 1, 1, null);
 		
 		Pet petCreated = petService.create(pet);
 		
@@ -98,19 +117,23 @@ public class PetServiceTest {
 
 	}
 
+	
+	/**
+	 * 
+	 */
 	@Test
 	public void testUpdatePet() {
 
-		String PET_NAME = "nieve";
-		int OWNER_ID = 2;
-		int TYPE_ID = 2;
+		String PET_NAME = "Bear";
+		int OWNER_ID = 1;
+		int TYPE_ID = 1;
 		long create_id = -1;
 
-		String UP_PET_NAME = "Ralph";
-		int UP_OWNER_ID = 1;
-		int UP_TYPE_ID = 1;
+		String UP_PET_NAME = "Bear2";
+		int UP_OWNER_ID = 2;
+		int UP_TYPE_ID = 2;
 
-		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
+		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID, null);
 
 		// Create record
 		logger.info(">" + pet);
@@ -136,14 +159,17 @@ public class PetServiceTest {
 		assertThat(upgradePet.getOwnerId(), is(UP_TYPE_ID));
 	}
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testDeletePet() {
-		
-		String PET_NAME = "nieve";
-		int OWNER_ID = 2;
-		int TYPE_ID = 2;
 
-		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
+		String PET_NAME = "Bird";
+		int OWNER_ID = 1;
+		int TYPE_ID = 1;
+
+		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID, null);
 		pet = petService.create(pet);
 		logger.info("" + pet);
 
