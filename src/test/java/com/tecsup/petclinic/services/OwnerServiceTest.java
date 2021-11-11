@@ -24,8 +24,8 @@ public class OwnerServiceTest{
 	 */
 	@Test
 	public void testFindByFirstname() {
-		String FIND_NAME = "George";
-		int SIZE_EXPECTED = 1;
+		String FIND_NAME = "Eduardo";
+		int SIZE_EXPECTED = 20;
 		List<Owner> own = ownerService.findByFirstname(FIND_NAME);
 
 		assertThat(SIZE_EXPECTED, is(own.size()));
